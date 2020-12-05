@@ -113,7 +113,7 @@ namespace PeepAcross.Engine.Controller
             }
         }
 
-        private Task<HttpClient> GetHttpClient(bool bypassServerCertValidation = false, string[] clientCertificateDetail = null)
+        private async Task<HttpClient> GetHttpClient(bool bypassServerCertValidation = false, string[] clientCertificateDetail = null)
         {
             HttpClient actualHttpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
@@ -128,33 +128,57 @@ namespace PeepAcross.Engine.Controller
                 }
                 if (clientCertificateDetail != null && clientCertificateDetail.Length > 0)
                 {
-                    if (clientCertificateDetail[0].IndexOf(".") != -1)
-                    {
-                        clientCertificate = new X509Certificate2(clientCertificateDetail[0], clientCertificateDetail[1]);
-                    }
-                    else
-                    {
-                        X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-                        store.Open(OpenFlags.ReadOnly);
-                        X509Certificate2Collection xResults = store.Certificates.Find(
-                                                                X509FindType.FindByThumbprint,
-                                                                "C58C1042CC448BE67EB69A279245D02C2CC0B4D3",
-                                                                false);
-                        clientCertificate = xResults[0];
-                    }
-
+                    // Read client certificate from file system or certificate store
+                    clientCertificate = await MapClientCertificate(clientCertificateDetail);
                     httpClientHandler.ClientCertificates.Add(clientCertificate);
                 }
 
                 actualHttpClient = new HttpClient(httpClientHandler);
 
-                return Task.FromResult(actualHttpClient);
+                return await Task.FromResult(actualHttpClient);
             }
             finally
             {
                 if (httpClientHandler is not null)
                 {
                     httpClientHandler = null;
+                }
+            }
+        }
+
+        private Task<X509Certificate2> MapClientCertificate(string[] inClientCertificate)
+        {
+            X509Certificate2 outClientCertificate = null;
+            X509Store store = null;
+            X509Certificate2Collection xResults = null;
+
+            try
+            {
+                // Read client certificate from file system as a file
+                if (inClientCertificate[0].IndexOf(".") != -1)
+                {
+                    outClientCertificate = new X509Certificate2(inClientCertificate[0], inClientCertificate[1]);
+                }
+                else
+                {
+                    // Read client certificate from certificate store
+                    var storeLocation = (StoreLocation)Enum.Parse(typeof(StoreLocation), inClientCertificate[1]);
+                    store = new X509Store(StoreName.My, storeLocation);
+                    store.Open(OpenFlags.ReadOnly);
+                    xResults = store.Certificates.Find(X509FindType.FindByThumbprint, 
+                                                    inClientCertificate[0],
+                                                    false);
+                    
+                    outClientCertificate = xResults[0];
+                }
+
+                return Task.FromResult(outClientCertificate);
+            }
+            finally
+            {
+                if (store is not null)
+                {
+                    store.Dispose();
                 }
             }
         }
