@@ -20,7 +20,7 @@
 - Unzip in Linux via [tar]
     > $ tar -xvf PeepAcross-linux-x64.tgz
 
-## How to run?
+## How to run??
 - Open PS or cmd or a termnial
 - Go to the directory where package is downloaded (via `cd`)
 - If .NET Framework based test, use `PeepAcross-Full.exe` (expects >= 4.6.1 .NET framework installed)
