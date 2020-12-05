@@ -5,12 +5,12 @@
     - AZURE SQL
     - REST
 
-# Next
+## Next
 - It is envisoned to cover most of the regular services that are heavily used. There is no restriction which all services makes the best sense over here.
 - It just needs contribution to make it even better via `PR`.
 - The next level development effort would e.g. be on AZURE REDIS CACHE, AZURE STORAGE, AZURE COSMOS, etc..
 
-# Download
+## Download
 - Download the utility from [here](../../releases/tag/v1.0)
     - If .NET Framework based test on Windows OS, download [PeepAcross-fx-win-x64.zip](../../releases/download/v1.0/PeepAcross-fx-win-x64.zip)
     - If .NET Core based test on Windows OS, download [PeepAcross-win-x64.zip](../../releases/download/v1.0/PeepAcross-win-x64.zip)
@@ -20,7 +20,7 @@
 - Unzip in Linux via [tar]
     > $ tar -xvf PeepAcross-linux-x64.tgz
 
-# How to run?
+## How to run?
 - Open PS or cmd or a termnial
 - Go to the directory where package is downloaded (via `cd`)
 - If .NET Framework based test, use `PeepAcross-Full.exe` (expects >= 4.6.1 .NET framework installed)
@@ -42,7 +42,20 @@
                            [-httpclient]
     ```
 
-## For SQL
+### For SQL
+This section have detailed on SQL related connectivity test.
+
+#### Options
+```
+>>.\PeepAcross-Core.exe -sql -sqlServer ""  
+                            -sqlServerPort ""  
+                            -sqlDatabase ""  
+                            -sqlQuery ""  
+                            -aadTenantId ""  
+                            -aadClientId "" 
+                            -aadClientSecretKey ""
+```
+#### Examples
 - If SQL Managed Identity based communication
 ```
 .\PeepAcross-Core.exe -sql -sqlServer YOURAZSQLSERVER.database.windows.net -sqlServerPort YOURSQLPORT -sqlDatabase YOURAZSQLDB -sqlQuery "YOUR SQL QUERY" -aadTenantId YOUR-AAD-TENANT-ID -aadClientId YOUR-AAD-CLIENT-ID -aadClientSecretKey YOUR-AAD-CLIENT-SECRET-KEY
@@ -52,10 +65,21 @@
 .\PeepAcross-Core.exe -sql -sqlServer YOURAZSQLSERVER.database.windows.net -sqlServerPort YOURSQLPORT -sqlDatabase YOURAZSQLDB -sqlQuery "YOUR SQL QUERY" -sqlUserID "YOUR-SQL-USERID" -sqlUserPassword "YOUR-SQL-USER-PASSWORD"
 ```
 
-## For HTTPCLIENT
+### For HTTPCLIENT
 - All CRUD operations (POST, GET, PUT, DELETE) are open to be tested.
 - There is an option to load test here too. However, the code block would reuse the client socket for each outbound communication.
 
+#### Options
+```
+>>.\PeepAcross-Core.exe -httpclient -serviceUri ""  
+                            -methodKind ""  
+                            -bypassServerCertValidation "" 
+                            -clientCertificate ","  
+                            -headers ""  
+                            -body ""  
+                            -loadTest ""
+```
+#### Examples
 - GET call
 ```
 .\PeepAcross-Core.exe -httpclient -serviceUri YOUR-SERVICE-URI
