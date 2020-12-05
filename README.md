@@ -1,4 +1,3 @@
-# About
 - It is a cross-platform utility designed with extensibility in mind, where it could easily be hooked up with various services in public. 
 - Objective is to understand with a small narrow code if basic connectivity parameters are valid. 
 - And, if there are any challenges with .NET echosystem or platform, we can easily get the idea fair quickly and act accordingly. 
