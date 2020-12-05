@@ -16,13 +16,13 @@ TODO
 # How to run?
 - Open PS or cmd or a termnial
 - Go to the directory where package is downloaded (via `cd`)
-- If .NET Framework based test, use `PeepAcross-Full.exe`
+- If .NET Framework based test, use `PeepAcross-Full.exe` (expects >= 4.6.1 .NET framework installed)
     ```
     > .\PeepAcross-Full.exe
     Usage: PeepAcross-Full [-sql]
                            [-httpclient]
     ```
-- If .NET Core based test, use `PeepAcross-Core.exe`
+- If .NET Core based test, use `PeepAcross-Core.exe` (app is self-contained)
     ```
     > .\PeepAcross-Core.exe
     Usage: PeepAcross-Full [-sql]
