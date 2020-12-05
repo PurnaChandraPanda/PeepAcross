@@ -25,7 +25,13 @@ TODO
 - If .NET Core based test, use `PeepAcross-Core.exe` (app is self-contained)
     ```
     > .\PeepAcross-Core.exe
-    Usage: PeepAcross-Full [-sql]
+    Usage: PeepAcross-Core [-sql]
+                           [-httpclient]
+    ```
+- If .NET Core based test on any [linux distro](https://docs.microsoft.com/en-us/dotnet/core/rid-catalog#linux-rids), use `PeepAcross-Core.exe` (app is self-contained)
+    ```
+    $ ./PeepAcross-Core.exe
+    Usage: PeepAcross-Core [-sql]
                            [-httpclient]
     ```
 
