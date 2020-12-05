@@ -7,7 +7,7 @@
 
 # Next
 - It is envisoned to cover most of the regular services that are heavily used. There is no restriction which all services makes the best sense over here.
-- It just needs contribution to make it even better.
+- It just needs contribution to make it even better via `PR`.
 - The next level development effort would e.g. be on AZURE REDIS CACHE, AZURE STORAGE, AZURE COSMOS, etc..
 
 # Download
@@ -72,7 +72,7 @@ TODO
 ```
 - GET with headers JSON file and bypass server certificate validation
     - Pass json headers file with full path name, which can have a well-formed JSON content
-    - e.g. -headers ".\header1.json""
+    - e.g. -headers ".\header1.json"
 ```
 .\PeepAcross-Core.exe -httpclient -serviceUri YOUR-SERVICE-URI -methodKind get -headers "YOUR-HEADERS-JSON-FILE-PATH" -bypassServerCertValidation true
 ```
@@ -84,13 +84,13 @@ TODO
 ```
 - POST with body JSON file and bypass server certificate validation
     - Pass json body file with full path name, which can have a well-formed JSON content
-    - e.g. -body ".\body1.json""
+    - e.g. -body ".\body1.json"
 ```
 .\PeepAcross-Core.exe -httpclient -serviceUri YOUR-SERVICE-URI -methodKind post -body "YOUR-BODY-JSON-FILE-PATH" -bypassServerCertValidation true
 ```
 - Load test for POST with body JSON file and bypass server certificate validation
     - Pass json body file with full path name, which can have a well-formed JSON content
-    - e.g. -body ".\body1.json""
+    - e.g. -body ".\body1.json"
     - Pass load test parameter number (>0 and INT32.MAXVALUE is the limit)
     - e.g. -loadTest 10
 ```
