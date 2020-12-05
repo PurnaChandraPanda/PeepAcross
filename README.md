@@ -12,9 +12,9 @@
 
 # Download
 - Download the utility from [here](https://github.com/PurnaChandraPanda/PeepAcross/releases/tag/v1.0)
-    > If .NET Framework based test on Windows OS, download PeepAcross-fx-win-x64.zip(releases/download/v1.0/PeepAcross-fx-win-x64.zip)
-    > If .NET Core based test on Windows OS, download PeepAcross-win-x64.zip
-    > If .NET Core based test on Linux OS, download PeepAcross-linux-x64.tgz
+    - If .NET Framework based test on Windows OS, download [PeepAcross-fx-win-x64.zip](releases/download/v1.0/PeepAcross-fx-win-x64.zip)
+    - If .NET Core based test on Windows OS, download PeepAcross-win-x64.zip
+    - If .NET Core based test on Linux OS, download PeepAcross-linux-x64.tgz
 - Unzip in Windows via [Extract all] or PS
     > `> Expand-Archive -LiteralPath .\PeepAcross-win-x64.Zip -DestinationPath .
 - Unzip in Linux via [tar]
