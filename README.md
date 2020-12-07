@@ -66,7 +66,7 @@ This section have detailed on SQL related connectivity test.
 ```
 
 ### For HTTPCLIENT
-- All CRUD operations (POST, GET, PUT, DELETE) are open to be tested.
+- All CRUD operations (POST, GET, PUT, DELETE + HEAD, OPTIONS, PATCH) are open to be tested.
 - There is an option to load test here too. However, the code block would reuse the client socket for each outbound communication.
 
 #### Options
